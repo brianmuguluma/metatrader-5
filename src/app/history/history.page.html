@@ -1,0 +1,25 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-segment value="positions">
+      @for (segment of segments(); track $index) {
+      <ion-segment-button [value]="segment.value" [contentId]="segment.value">
+        <ion-label> {{ segment.label }} </ion-label>
+      </ion-segment-button>
+      }
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-segment-view>
+    <ion-segment-content id="positions">
+      <app-positions />
+    </ion-segment-content>
+    <ion-segment-content id="orders">
+      <app-orders />
+    </ion-segment-content>
+    <ion-segment-content id="deals">
+      <app-deals />
+    </ion-segment-content>
+  </ion-segment-view>
+</ion-content>
