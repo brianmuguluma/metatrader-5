@@ -1,5 +1,5 @@
 <ion-tabs>
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" class="opacity-0">
     <ion-tab-button tab="quotes" href="/tabs/quotes">
       <ion-icon aria-hidden="true" name="triangle"></ion-icon>
       <ion-label>Tab 1</ion-label>
@@ -27,4 +27,10 @@
   </ion-tab-bar>
 </ion-tabs>
 
-<img src="../../assets/history.png" alt="" class="absolute bottom-0 z-10" />
+<!-- @if () { -->
+<img
+  src="../../assets/history.png"
+  alt=""
+  class="bottom-0 z-10 absolute opacity-0 pointer-events-none"
+/>
+<!-- } -->

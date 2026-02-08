@@ -14,14 +14,18 @@ import {
   styleUrls: ['./settings.page.scss'],
   standalone: true,
   imports: [
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
+    // IonContent,
+    // IonHeader,
+    // IonTitle,
+    // IonToolbar,
     CommonModule,
     FormsModule,
   ],
 })
 export class SettingsPage {
-  constructor() {}
+  constructor() {
+    setInterval(() => {
+      // console.log(Date.now());
+    }, 100);
+  }
 }
