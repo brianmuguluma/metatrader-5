@@ -4,3 +4,8 @@
 ion-content::part(scroll)::-webkit-scrollbar {
   display: none;
 }
+
+:root {
+  /* Set the background of the entire app */
+  --ion-background-color: transparent;
+}

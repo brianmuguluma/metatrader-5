@@ -1,25 +1,61 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-segment value="positions">
-      @for (segment of segments(); track $index) {
-      <ion-segment-button [value]="segment.value" [contentId]="segment.value">
-        <ion-label> {{ segment.label }} </ion-label>
-      </ion-segment-button>
-      }
-    </ion-segment>
+<!-- <ion-header class="ion-no-border">
+  <div></div>
+  <ion-toolbar class="ion-no-padding">
+    <img
+      src="../../assets/pages/history/header.png"
+      class="w-full h-30 object-cover overflow-hidden"
+    />
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content [fullscreen]="true">
-  <ion-segment-view>
-    <ion-segment-content id="positions">
-      <app-positions />
-    </ion-segment-content>
-    <ion-segment-content id="orders">
-      <app-orders />
-    </ion-segment-content>
-    <ion-segment-content id="deals">
-      <app-deals />
-    </ion-segment-content>
-  </ion-segment-view>
+<ion-content>
+  <div class="absolute inset-0">
+    <img
+      src="../../assets/pages/history/header.png"
+      class="fixed w-screen h-screen object-contain object-top"
+    />
+
+    <div class="top-30 absolute inset-0 w-full">
+      <ion-list lines="none">
+        <div class="gap-y-2.5 grid grid-cols-1">
+          @for (trade of trades(); track $index) {
+          <app-trade-item [trade]="trade" />
+          }
+        </div>
+      </ion-list>
+
+      <div class="p-[0.42rem] w-full text-sm">
+        <div class="flex justify-between">
+          <span>Deposit</span>
+          <span class="font-medium"
+            >{{ app.deposit() | number : '1.2-2' | comma }}</span
+          >
+        </div>
+        <div class="flex justify-between">
+          <span>Profit</span>
+          <span class="font-medium">
+            {{ app.account()?.pl | absolute | number : '1.2-2' | comma }}
+          </span>
+        </div>
+        <div class="flex justify-between">
+          <span>Swap</span
+          ><span class="font-medium"
+            >{{ app.account()?.financing | number : '1.2-2' | comma }}</span
+          >
+        </div>
+        <div class="flex justify-between">
+          <span>Commission</span>
+          <span class="font-medium"
+            >{{ app.account()?.commission | number : '1.2-2' | comma }}</span
+          >
+        </div>
+        <div class="flex justify-between">
+          <span>Balance</span>
+          <span class="font-medium"
+            >{{ app.balance() | number : '1.2-2' | comma }}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

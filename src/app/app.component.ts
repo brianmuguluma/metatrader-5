@@ -26,7 +26,11 @@ export class AppComponent {
   device = inject(Device);
 
   route = signal<string>('home');
-  balance = signal({ available: 17329, pending: 459 });
+  // balance = signal({ available: 2734.77, pending: 459 });
+  deposit = signal(1000);
+  balance = computed(
+    () => this.deposit() + Math.abs(Number(this.account()?.pl) ?? 0)
+  );
   currency = signal('GBP');
 
   platform = computed(async () => (await this.device.getInfo()).platform);
@@ -47,18 +51,18 @@ export class AppComponent {
 
   // Formatting
 
-  currencyFormatOptions = computed<Intl.NumberFormatOptions>(() => ({
-    style: this.currency() ? 'currency' : undefined,
-    notation: 'compact',
-    currency: this.currency(),
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }));
+  // currencyFormatOptions = computed<Intl.NumberFormatOptions>(() => ({
+  //   style: this.currency() ? 'currency' : undefined,
+  //   notation: 'compact',
+  //   currency: this.currency(),
+  //   minimumFractionDigits: 2,
+  //   maximumFractionDigits: 2,
+  // }));
 
-  unitsFormatOptions = computed<Intl.NumberFormatOptions>(() => ({
-    notation: 'compact',
-    maximumFractionDigits: 1,
-  }));
+  // unitsFormatOptions = computed<Intl.NumberFormatOptions>(() => ({
+  //   notation: 'compact',
+  //   maximumFractionDigits: 1,
+  // }));
   private lastTransactionID = signal<string | undefined>(undefined);
 
   interval = signal(1000);
@@ -67,7 +71,7 @@ export class AppComponent {
     await this.getAccount();
     this.getInstruments();
     this.pollAccount();
-    setInterval(() => this.pollAccount(), this.interval());
+    // setInterval(() => this.pollAccount(), this.interval());
   }
 
   async getInstruments() {

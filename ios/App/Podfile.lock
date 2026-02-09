@@ -1,22 +1,28 @@
 PODS:
-  - Capacitor (7.4.3):
+  - Capacitor (8.0.2):
     - CapacitorCordova
-  - CapacitorApp (7.1.0):
+  - CapacitorApp (8.0.0):
     - Capacitor
-  - CapacitorCordova (7.4.3)
-  - CapacitorHaptics (7.0.2):
+  - CapacitorCordova (8.0.2)
+  - CapacitorDevice (8.0.0):
     - Capacitor
-  - CapacitorKeyboard (7.0.3):
+  - CapacitorHaptics (8.0.0):
     - Capacitor
-  - CapacitorStatusBar (7.0.3):
+  - CapacitorKeyboard (8.0.0):
+    - Capacitor
+  - CapacitorLocalNotifications (8.0.0):
+    - Capacitor
+  - CapacitorStatusBar (8.0.0):
     - Capacitor
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
   - "CapacitorHaptics (from `../../node_modules/@capacitor/haptics`)"
   - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
+  - "CapacitorLocalNotifications (from `../../node_modules/@capacitor/local-notifications`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
 
 EXTERNAL SOURCES:
@@ -26,21 +32,27 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/app"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
+  CapacitorDevice:
+    :path: "../../node_modules/@capacitor/device"
   CapacitorHaptics:
     :path: "../../node_modules/@capacitor/haptics"
   CapacitorKeyboard:
     :path: "../../node_modules/@capacitor/keyboard"
+  CapacitorLocalNotifications:
+    :path: "../../node_modules/@capacitor/local-notifications"
   CapacitorStatusBar:
     :path: "../../node_modules/@capacitor/status-bar"
 
 SPEC CHECKSUMS:
-  Capacitor: b4741ca7affb32c1b70debd03df92cbf522d8a80
-  CapacitorApp: 846d4b4a1dbb19dd1e9029c08ba6f028aa7be862
-  CapacitorCordova: 435121e81a2df4d0034f0fb11fcefab5104cfdb5
-  CapacitorHaptics: 09d96bcb5a2b74ede8fd039b4cdf58fc43dcacf1
-  CapacitorKeyboard: 3822c3a0c6b58168f96ca562f9534ed095d40860
-  CapacitorStatusBar: 7d8fcbd6768db014bd721d75e246590b014928e8
+  Capacitor: cfc1ce4a70dbc19fdc4e66e17808937088029752
+  CapacitorApp: cfa0120a1f3a6f69d4d37d3041782aa5c5167d0b
+  CapacitorCordova: 921bdb690ebe82421b24fce45552fd3dea2ae43a
+  CapacitorDevice: 56baac70d6493c42756676d521e99eea5cc83e71
+  CapacitorHaptics: 7a77ce744c4b516b3ffd7f8c96d3de574d77b898
+  CapacitorKeyboard: 0a2e7c0635ccf3db60abed14bd6f35147ce25942
+  CapacitorLocalNotifications: b0003a1b69c95badd88f9cb56b1965ace20eb346
+  CapacitorStatusBar: c6fa2d404083e41d145ea56698707a6986d4428b
 
-PODFILE CHECKSUM: f8c95c38f42283ff8d7c6bf6fa1435ecdce85ae9
+PODFILE CHECKSUM: 1816c0a5becf46bf4baabb9ece57871b5cdda40b
 
 COCOAPODS: 1.13.0
