@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
+<ion-content class="pb-30">
   <div class="absolute inset-0">
     <img
       src="../../assets/pages/history/header.png"
@@ -28,34 +28,43 @@
         <div class="flex justify-between">
           <span>Deposit</span>
           <span class="font-medium"
-            >{{ app.deposit() | number : '1.2-2' | comma }}</span
+            >{{ app.deposit() | number : '1.2-2' | replace : ',' : ' ' }}</span
           >
         </div>
         <div class="flex justify-between">
           <span>Profit</span>
           <span class="font-medium">
-            {{ app.account()?.pl | absolute | number : '1.2-2' | comma }}
+            {{ app.account()?.pl | absolute | number : '1.2-2' | replace : ',' :
+            ' ' }}
           </span>
         </div>
         <div class="flex justify-between">
           <span>Swap</span
           ><span class="font-medium"
-            >{{ app.account()?.financing | number : '1.2-2' | comma }}</span
+            >{{ app.account()?.financing | number : '1.2-2' | replace : ',' : '
+            ' }}</span
           >
         </div>
         <div class="flex justify-between">
           <span>Commission</span>
           <span class="font-medium"
-            >{{ app.account()?.commission | number : '1.2-2' | comma }}</span
+            >{{ app.account()?.commission | number : '1.2-2' | replace : ',' : '
+            ' }}</span
           >
         </div>
         <div class="flex justify-between">
           <span>Balance</span>
           <span class="font-medium"
-            >{{ app.balance() | number : '1.2-2' | comma }}</span
+            >{{ app.balance() | number : '1.2-2' | replace : ',' : ' ' }}</span
           >
         </div>
       </div>
     </div>
+    <img
+      src="../../assets/tabs/history.png"
+      class="-z-10 fixed w-screen h-screen object-bottom object-contain pointer-events-none"
+    />
   </div>
+
+  <app-tabs />
 </ion-content>

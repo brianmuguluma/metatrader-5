@@ -1,13 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>trade</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">trade</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="absolute inset-0">
+    <img
+      src="../../assets/pages/trade/header.png"
+      class="fixed w-screen h-screen object-contain object-top"
+    />
+  </div>
+
+  <img
+    src="../../assets/pages/trade/tabs.png"
+    class="-z-10 fixed w-screen h-screen object-bottom object-contain pointer-events-none"
+  />
+
+  <app-tabs />
 </ion-content>

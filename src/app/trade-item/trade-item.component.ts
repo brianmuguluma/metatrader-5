@@ -7,7 +7,7 @@ import { SidePipe } from '../pipes/side/side-pipe';
 import { OandaService } from '../services/oanda/oanda';
 import { AbsolutePipe } from '../pipes/absolute/absolute-pipe';
 import { ReplacePipe } from '../pipes/replace/replace.pipe';
-import { CommaPipe } from '../pipes/comma/comma.pipe';
+import { LotsPipe } from '../pipes/lots/lots.pipe';
 
 @Component({
   selector: 'app-trade-item',
@@ -23,6 +23,7 @@ import { CommaPipe } from '../pipes/comma/comma.pipe';
     SidePipe,
     DatePipe,
     NgClass,
+    LotsPipe,
   ],
 })
 export class TradeItemComponent {

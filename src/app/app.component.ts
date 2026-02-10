@@ -25,7 +25,6 @@ import { environment } from 'src/environments/environment.prod';
 export class AppComponent {
   device = inject(Device);
 
-  route = signal<string>('home');
   // balance = signal({ available: 2734.77, pending: 459 });
   deposit = signal(1000);
   balance = computed(

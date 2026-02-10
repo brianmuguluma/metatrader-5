@@ -1,16 +1,16 @@
-<ion-item class="relative">
+<ion-item class="relative" class="hover:bg-blue-400">
   <ion-label>
     <div class="flex justify-between">
       <div class="gap-y-[0.1rem] grid grid-cols-1">
-        <div>
-          <span class="font-semibold tracking-tighter">
+        <div class="tracking-tight">
+          <span class="font-semibold">
             {{ trade().instrument | replace : "_" : "" }}
           </span>
           <span
             class="font-medium"
             [ngClass]="side() ? 'text-blue-500' : 'text-red-500'"
           >
-            {{ trade().initialUnits | side }} 2
+            {{ trade().initialUnits | side }} {{ trade().initialUnits | lots }}
           </span>
         </div>
         <div class="flex items-center gap-x-1 text-[#4e4d54] text-sm">
@@ -28,7 +28,7 @@
       <div class="flex flex-col items-end space-y-[0.1rem]">
         <span
           class="font-semibold"
-          [ngClass]="isInProfit() ? 'text-blue-500' : 'text-red-500'"
+          [ngClass]="isInProfit() ? 'text-blue-500' : 'text-blue-500'"
         >
           {{
             trade().realizedPL

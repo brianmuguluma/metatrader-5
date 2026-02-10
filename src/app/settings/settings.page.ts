@@ -7,6 +7,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/angular/standalone';
+import { TabsComponent } from '../tabs/tabs.component';
 
 @Component({
   selector: 'app-settings',
@@ -20,6 +21,7 @@ import {
     // IonToolbar,
     CommonModule,
     FormsModule,
+    TabsComponent,
   ],
 })
 export class SettingsPage {

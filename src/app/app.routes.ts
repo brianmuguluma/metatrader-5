@@ -3,7 +3,8 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
+    loadComponent: () =>
+      import('./history/history.page').then((m) => m.HistoryPage),
   },
   {
     path: 'settings',

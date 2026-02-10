@@ -2,12 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'lots',
-  standalone: true
+  standalone: true,
 })
 export class LotsPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(units: any): any {
+    return Math.abs(Number(units)) / 100;
   }
-
 }

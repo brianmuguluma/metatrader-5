@@ -1,26 +1,14 @@
 import { Component, inject, OnInit, signal, ViewChild } from '@angular/core';
-import {
-  IonContent,
-  IonHeader,
-  IonToolbar,
-  IonSegment,
-  IonSegmentButton,
-  IonLabel,
-  IonSegmentView,
-  IonSegmentContent,
-  IonList,
-} from '@ionic/angular/standalone';
-import { PositionsComponent } from '../positions/positions.component';
-import { OrdersComponent } from '../orders/orders.component';
-import { DealsComponent } from '../deals/deals.component';
+import { IonContent, IonList } from '@ionic/angular/standalone';
 import { AppComponent } from '../app.component';
 import { DecimalPipe } from '@angular/common';
 import { AbsolutePipe } from '../pipes/absolute/absolute-pipe';
-import { CommaPipe } from '../pipes/comma/comma.pipe';
 import { Trade } from '../interfaces/oanda';
 import { OandaService } from '../services/oanda/oanda';
 import { HttpParams } from '@capacitor/core';
 import { TradeItemComponent } from '../trade-item/trade-item.component';
+import { ReplacePipe } from '../pipes/replace/replace.pipe';
+import { TabsComponent } from '../tabs/tabs.component';
 
 @Component({
   selector: 'app-history',
@@ -28,22 +16,13 @@ import { TradeItemComponent } from '../trade-item/trade-item.component';
   styleUrls: ['./history.page.scss'],
   standalone: true,
   imports: [
-    // IonLabel,
-    // IonSegmentButton,
-    // IonSegment,
     IonContent,
-    IonHeader,
-    IonToolbar,
-    // IonSegmentView,
-    // IonSegmentContent,
-    // PositionsComponent,
-    // OrdersComponent,
-    // DealsComponent,
     DecimalPipe,
     AbsolutePipe,
-    CommaPipe,
     TradeItemComponent,
     IonList,
+    ReplacePipe,
+    TabsComponent,
   ],
 })
 export class HistoryPage implements OnInit {
@@ -62,13 +41,15 @@ export class HistoryPage implements OnInit {
 
   async ngOnInit() {
     await this.getTrades();
-    this.content?.scrollToBottom(0);
+    // setTimeout(() => {
+    //   this.content?.scrollToBottom(0);
+    // }, 3000);
   }
 
   async getTrades() {
     const params: HttpParams = {
       state: 'CLOSED',
-      count: '50',
+      count: '10',
     };
 
     // const params: HttpParams = {};
@@ -79,7 +60,7 @@ export class HistoryPage implements OnInit {
 
     if (status !== 200) return;
 
-    const trades: Trade[] = data.trades;
+    const trades: Trade[] = data.trades.reverse();
     this.trades?.set([...trades]);
   }
 }
