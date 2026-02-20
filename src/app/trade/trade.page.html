@@ -1,15 +1,81 @@
-<ion-content [fullscreen]="true">
+<ion-content class="pb-30">
   <div class="absolute inset-0">
     <img
       src="../../assets/pages/trade/header.png"
       class="fixed w-screen h-screen object-contain object-top"
     />
-  </div>
 
-  <img
-    src="../../assets/pages/trade/tabs.png"
-    class="-z-10 fixed w-screen h-screen object-bottom object-contain pointer-events-none"
-  />
+    <div class="top-30 absolute inset-0 w-full">
+      <div class="p-[0.42rem] w-full text-sm">
+        <!-- Balance -->
+        <div class="flex justify-between">
+          <span>Balance</span>
+          <span class="font-medium">
+            {{ app.account()?.balance | number : '1.2-2' | replace : ',' : ' '
+            }}
+          </span>
+        </div>
+
+        <!-- Equity -->
+        <div class="flex justify-between">
+          <span>Equity</span>
+          <span class="font-medium">
+            {{ app.account()?.NAV | absolute | number : '1.2-2' | replace : ','
+            : ' ' }}
+          </span>
+        </div>
+
+        <!-- Margin -->
+        <div class="flex justify-between">
+          <span>Margin</span>
+          <span class="font-medium">
+            {{ app.account()?.marginUsed| number : '1.2-2' | replace : ',' : ' '
+            }}
+          </span>
+        </div>
+
+        <!-- Free Margin -->
+        @if (trades()) {
+        <div class="flex justify-between">
+          <span>Free Margin</span>
+          <span class="font-medium">
+            {{ app.account()?.marginAvailable | number : '1.2-2' | replace : ','
+            : ' ' }}
+          </span>
+        </div>
+        }
+
+        <!-- Margin Level -->
+        @if (trades()) {
+        <div class="flex justify-between">
+          <span>Margin Level (%)</span>
+          <span class="font-medium">
+            {{ marginLevel() | number : '1.2-2' | replace : ',' : ' ' }}
+          </span>
+        </div>
+        }
+      </div>
+
+      <!-- Trades -->
+      @if (trades()) {
+      <div>
+        <img src="../../assets/pages/trade/divider.PNG" class="my-2" />
+
+        <ion-list lines="none">
+          <div class="gap-y-2.5 grid grid-cols-1">
+            @for (trade of app.poll()?.state?.trades; track $index) {
+            <app-position-item [trade]="trade" />
+            }
+          </div>
+        </ion-list>
+      </div>
+      }
+    </div>
+    <img
+      src="../../assets/pages/trade/tabs.png"
+      class="-z-10 fixed w-screen h-screen object-bottom object-contain pointer-events-none"
+    />
+  </div>
 
   <app-tabs />
 </ion-content>

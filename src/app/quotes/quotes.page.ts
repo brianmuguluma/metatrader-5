@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 import {
   IonContent,
   IonHeader,
@@ -12,16 +11,7 @@ import {
   selector: 'app-quotes',
   templateUrl: './quotes.page.html',
   styleUrls: ['./quotes.page.scss'],
-  standalone: true,
-  imports: [
-    IonContent,
-    IonHeader,
-    IonTitle,
-    IonToolbar,
-    CommonModule,
-    FormsModule,
-  ],
+
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar],
 })
-export class QuotesPage {
-  constructor() {}
-}
+export class QuotesPage {}

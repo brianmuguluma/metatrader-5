@@ -14,7 +14,7 @@ import { TabsComponent } from '../tabs/tabs.component';
   selector: 'app-history',
   templateUrl: './history.page.html',
   styleUrls: ['./history.page.scss'],
-  standalone: true,
+
   imports: [
     IonContent,
     DecimalPipe,

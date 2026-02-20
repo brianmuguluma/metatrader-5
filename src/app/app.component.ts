@@ -16,6 +16,7 @@ import {
 } from '@capacitor/core';
 import { RateLimiter } from 'limiter';
 import { environment } from 'src/environments/environment.prod';
+import { OandaService } from './services/oanda/oanda';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class AppComponent {
   device = inject(Device);
+  oanda = inject(OandaService);
 
   // balance = signal({ available: 2734.77, pending: 459 });
   deposit = signal(1000);
@@ -48,41 +50,14 @@ export class AppComponent {
   poll = signal<AccountPoll | undefined>(undefined);
   instruments = signal<Instrument[] | undefined>(undefined);
 
-  // Formatting
-
-  // currencyFormatOptions = computed<Intl.NumberFormatOptions>(() => ({
-  //   style: this.currency() ? 'currency' : undefined,
-  //   notation: 'compact',
-  //   currency: this.currency(),
-  //   minimumFractionDigits: 2,
-  //   maximumFractionDigits: 2,
-  // }));
-
-  // unitsFormatOptions = computed<Intl.NumberFormatOptions>(() => ({
-  //   notation: 'compact',
-  //   maximumFractionDigits: 1,
-  // }));
   private lastTransactionID = signal<string | undefined>(undefined);
 
-  interval = signal(1000);
+  interval = signal(50);
+  price = signal(0);
 
   async ngOnInit() {
     await this.getAccount();
-    this.getInstruments();
-    this.pollAccount();
     // setInterval(() => this.pollAccount(), this.interval());
-  }
-
-  async getInstruments() {
-    const options: HttpOptions = {
-      headers: this.getHeaders(),
-      url: `${this.getBaseUrl()}/accounts/${this.account()?.id}/instruments`,
-    };
-    const { data, status } = await CapacitorHttp.get(options);
-    if (status === 200) {
-      const { instruments } = data;
-      this.instruments.set(instruments);
-    }
   }
 
   filterInstruments(name: string) {
@@ -109,6 +84,14 @@ export class AppComponent {
 
   async pollAccount() {
     const changes = await this.getAccountChanges();
+    const { data, status } = await this.oanda.getCandlesticks('XAU_USD', {
+      count: '1',
+      granularity: 'S5',
+    });
+
+    if (status === 200) {
+      this.price.set(data.candles[0].mid.c);
+    }
 
     if (changes?.status !== 200) return;
 

@@ -127,6 +127,21 @@ export class OandaService {
    * @param instrument Name of the Instrument
    * @returns Fetch candlestick data for an instrument.
    */
+  async getInstruments(params: HttpParams): Promise<HttpResponse> {
+    const options: HttpOptions = {
+      headers: this.getHeaders(),
+      params,
+      url: `${this.getBaseUrl()}/accounts/${
+        environment.oanda.accountId
+      }/instruments`,
+    };
+    return await CapacitorHttp.get(options);
+  }
+
+  /**
+   * @param instrument Name of the Instrument
+   * @returns Fetch candlestick data for an instrument.
+   */
   async getCandlesticks(
     instrument: string,
     params: HttpParams

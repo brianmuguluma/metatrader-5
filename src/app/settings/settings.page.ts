@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+
 import {
   IonContent,
   IonHeader,
@@ -13,14 +12,13 @@ import { TabsComponent } from '../tabs/tabs.component';
   selector: 'app-settings',
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
-  standalone: true,
+
   imports: [
     // IonContent,
     // IonHeader,
     // IonTitle,
     // IonToolbar,
-    CommonModule,
-    FormsModule,
+
     TabsComponent,
   ],
 })
